@@ -1,0 +1,28 @@
+{
+  "name": "desafio-back-end",
+  "version": "1.0.0",
+  "description": "O PicPay Simplificado é uma plataforma de pagamentos simplificada. Nela é possível depositar e realizar transferências\r de dinheiro entre usuários. Temos 2 tipos de usuários, os comuns e lojistas, ambos têm carteira com dinheiro e realizam\r transferências entre eles.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/claujunior/Desafio-Back-end.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/claujunior/Desafio-Back-end/issues"
+  },
+  "homepage": "https://github.com/claujunior/Desafio-Back-end#readme",
+  "dependencies": {
+    "@prisma/client": "^7.8.0",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "prisma": "^7.8.0",
+    "zod": "^4.4.3"
+  }
+}
