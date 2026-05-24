@@ -5,5 +5,9 @@ export const createUserSchema = z.object({
   email: z.string().email(),
   cpf: z.string().length(11),
   password: z.string().min(6),
-  type: z.enum(["USUARIOS", "LOJISTAS"])
+});
+
+export const creareLoginSchema = z.object({
+  email: z.string().email(),
+  password: z.string().min(6)
 });
