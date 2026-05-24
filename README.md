@@ -57,6 +57,3 @@ Content-Type: application/json
 ```
 
 
-- https://martinfowler.com/articles/microservices.html
-- https://docs.guzzlephp.org/en/stable/request-options.html
-- https://www.devmedia.com.br/rest-tutorial/28912
