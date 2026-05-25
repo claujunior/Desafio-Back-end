@@ -1,9 +1,10 @@
-import { findEmail,createUser,findCpf } from "../repository/userRepository.js";
+import { findEmail, createUser, findCpf } from "../repository/userRepository.js";
+import { generateToken } from "./tokenService.js";
 
 export async function criarUsuario(user) {
     const emailDuplicado = await findEmail(user.email)
     const cpfDuplicado = await findCpf(user.cpf)
-    if(emailDuplicado || cpfDuplicado){
+    if (emailDuplicado || cpfDuplicado) {
         //excepition
     }
     return await createUser({
@@ -11,16 +12,19 @@ export async function criarUsuario(user) {
         email: user.email,
         cpf: user.cpf,
         password: user.password,
-        type: "USUARIOS"
+        type: "USUARIOS",
+        wallet: {
+            create: { balance: 0 }
+        }
     })
 }
 export async function login(user) {
     const userlogin = await findEmail(user.email)
-    if(!userlogin){
+    if (!userlogin) {
         //exception
     }
-    if(userlogin.password!=user.password){
+    if (userlogin.password != user.password) {
         //exception
     }
-    return //token
+    return generateToken(userlogin)
 }
