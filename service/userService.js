@@ -14,3 +14,13 @@ export async function criarUsuario(user) {
         type: "USUARIOS"
     })
 }
+export async function login(user) {
+    const userlogin = await findEmail(user.email)
+    if(!userlogin){
+        //exception
+    }
+    if(userlogin.password!=user.password){
+        //exception
+    }
+    return //token
+}
