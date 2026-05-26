@@ -1,5 +1,5 @@
 import express from "express";
-import { creareLoginSchema, createUserSchema } from "../../validation/userValidation.js";
+import { createLoginSchema, createUserSchema } from "../../validation/userValidation.js";
 import { criarUsuario,login } from "../../service/userService.js";
 const router = express.Router();
 

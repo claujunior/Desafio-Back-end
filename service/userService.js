@@ -13,7 +13,7 @@ export async function criarUsuario(user) {
         cpf: user.cpf,
         password: user.password,
         type: "USUARIOS",
-        wallet: {
+        Wallet: {
             create: { balance: 0 }
         }
     })
