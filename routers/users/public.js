@@ -3,7 +3,7 @@ import { creareLoginSchema, createUserSchema } from "../../validation/userValida
 import { criarUsuario,login } from "../../service/userService.js";
 const router = express.Router();
 
-router.post("/cadastro", (req, res) => {
+router.post("/cadastro",async (req, res) => {
     const parsed = createUserSchema.safeParse(req.body);
     if (!parsed) {
         return res.status(400).json({ errors: parsed.error.errors });
@@ -16,7 +16,7 @@ router.post("/cadastro", (req, res) => {
     }
 })
 
-router.post("/login", (req, res) => {
+router.post("/login", async (req, res) => {
     const parsed = createLoginSchema.safeParse(req.body);
     if (!parsed) {
         return res.status(400).json({ errors: parsed.error.errors });

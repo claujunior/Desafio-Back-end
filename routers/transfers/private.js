@@ -1,19 +1,19 @@
 import express from "express";
-import { createTransferSchema } from "../../validation/transferValidation";
-import { transfers } from "../../service/transferService";
-import { authToken } from "../../service/tokenService";
+import { createTransferSchema } from "../../validation/transferValidation.js";
+import { transfers } from "../../service/transferService.js";
+import { authToken } from "../../service/tokenService.js";
 const router = express.Router();
 
-router.post("/send",authToken,(req,res)=>{
+router.post("/send",authToken,async (req,res)=>{
     const senderId = req.user.id;
     const parsed = createTransferSchema.safeParse(req.body);
     if(!parsed){
         return res.status(400).json({ errors: parsed.error.errors });
     }
     try{
-      const transfer = await transfers(  // ← faltou await e return
+      const transfer = await transfers( 
       senderId,
-      parsed.data.receiverId,  // ← usar parsed.data, não req.body
+      parsed.data.receiverId, 
       parsed.data.amount
     );
     res.status(201).json(transfer);
