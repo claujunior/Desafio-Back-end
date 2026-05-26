@@ -1,5 +1,4 @@
-import { findId } from "../repository/userRepository.js"
-import prisma from "../repository/transferRepository.js"
+import prisma, { findId, findUserWithSentTransfers, findUserWithReceivedTransfers } from "../repository/userRepository.js"
 
 export async function transfers(sendId, receiverId, amount) {
     const sender = await findId(sendId);
@@ -35,4 +34,20 @@ export async function transfers(sendId, receiverId, amount) {
     });
 
     return transfer;
+}
+
+export async function getSentTransfers(userId) {
+    const user = await findUserWithSentTransfers(userId);
+    if (!user) {
+        throw new Error('Usuário não encontrado');
+    }
+    return user.sentTransfers;
+}
+
+export async function getReceivedTransfers(userId) {
+    const user = await findUserWithReceivedTransfers(userId);
+    if (!user) {
+        throw new Error('Usuário não encontrado');
+    }
+    return user.receivedTransfers;
 }

@@ -18,7 +18,34 @@ export async function findCpf(cpf) {
 }
 export async function findId(id) {
     return await prisma.user.findUnique({
-  where: { id: id }
+  where: { id: id },
+  include: { Wallet: true }
+});
+}
+
+export async function findUserWithSentTransfers(id) {
+    return await prisma.user.findUnique({
+  where: { id: id },
+  include: {
+    sentTransfers: {
+      include: {
+        receiver: true
+      }
+    }
+  }
+});
+}
+
+export async function findUserWithReceivedTransfers(id) {
+    return await prisma.user.findUnique({
+  where: { id: id },
+  include: {
+    receivedTransfers: {
+      include: {
+        sender: true
+      }
+    }
+  }
 });
 }
 
