@@ -23,6 +23,10 @@ router.post("/send",authToken,async (req,res)=>{
     }
 
 })
+router.get("/transfer/senders",authToken,async (req,res)=>{
 
-
+})
+router.get("/transfer/receivers",authToken,async (req,res)=>{
+    
+})
 export default router

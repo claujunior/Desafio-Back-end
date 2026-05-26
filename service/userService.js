@@ -5,7 +5,7 @@ export async function criarUsuario(user) {
     const emailDuplicado = await findEmail(user.email)
     const cpfDuplicado = await findCpf(user.cpf)
     if (emailDuplicado || cpfDuplicado) {
-        //excepition
+        throw new Error('Email ou CPF já cadastrado')
     }
     return await createUser({
         name: user.name,
@@ -21,10 +21,10 @@ export async function criarUsuario(user) {
 export async function login(user) {
     const userlogin = await findEmail(user.email)
     if (!userlogin) {
-        //exception
+        throw new Error('Email não encontrado')
     }
     if (userlogin.password != user.password) {
-        //exception
+        throw new Error('Senha incorreta')
     }
     return generateToken(userlogin)
 }

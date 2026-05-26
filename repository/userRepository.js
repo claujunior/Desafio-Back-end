@@ -21,4 +21,5 @@ export async function findId(id) {
   where: { id: id }
 });
 }
+
 export default prisma;
